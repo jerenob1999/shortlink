@@ -15,7 +15,7 @@ const paths = [
 
 function Header() {
   return (
-    <Navigation className='h-4'>
+    <Navigation className='h-4 px-24'>
       <NavigationContent className='bg-transparent h-20'>
         <div className='flex justify-end h-full'>
           <li className='list-none flex justify-center items-center'>

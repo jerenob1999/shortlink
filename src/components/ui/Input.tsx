@@ -9,9 +9,9 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 function Input({ className, label, ...props }: Props) {
   return (
-    <div className="grid w-full max-w-sm items-center ">
+    <div className="grid w-full max-w-sm items-center">
       <label>{label}</label>
-      <input className={className} {...props} />
+      <input className={className} {...props}/>
     </div>
   )
 }
