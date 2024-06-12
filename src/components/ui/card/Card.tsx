@@ -1,15 +1,26 @@
-import React from 'react'
+import React from "react";
+import { clsx } from "clsx";
 
-interface Props {
-  children: React.ReactNode
+interface Props
+  extends React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+  > {
+  children: React.ReactNode;
 }
 
-function Card({ children }: Props) {
+function Card({ children, className, ...props }: Props) {
   return (
-    <div className='rounded-lg shadow-lg bg-neutral-50 h-40 w-1/4 p-2 '>
+    <div
+      {...props}
+      className={clsx(
+        "rounded-lg shadow-lg bg-neutral-50 h-40 w-1/4 p-2 min-w-64",
+        className
+      )}
+    >
       {children}
     </div>
-  )
+  );
 }
 
-export default Card
+export default Card;
