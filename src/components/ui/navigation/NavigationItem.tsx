@@ -2,15 +2,15 @@ import React from "react";
 import Link from "next/link";
 
 interface Props {
-  title: string;
+  children: React.ReactNode;
   href: string;
   className?: string;
 }
 
-function NavigationItem({ className, title, href }: Props) {
+function NavigationItem({ className, children, href }: Props) {
   return (
     <Link href={href} className={className}>
-      {title}
+      {children}
     </Link>
   );
 }

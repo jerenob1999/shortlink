@@ -19,17 +19,29 @@ const paths = [
 
 function Header() {
   return (
-    <Navigation className="h-4 px-24">
-      <NavigationContent className="bg-transparent h-20">
-        <div className="flex justify-end h-full">
-          <li className="list-none flex justify-center items-center">
+    <Navigation className="h-20 w-full">
+      <NavigationContent className="bg-slate-800 px-24 h-16">
+        <div className="flex justify-between h-full">
+          <li className="list-none flex justify-between items-center">
+            <ul>
+              <NavigationItem
+                href={Path.HOME}
+                className="py-4 font-bold text-2xl text-slate-800 hover:text-blue-500"
+              >
+                <span className="text-neutral-50">Short</span>
+                <span className="text-blue-600">Link</span>
+              </NavigationItem>
+            </ul>
+          </li>
+          <li className="list-none flex justify-between items-center">
             {paths.map((path) => (
               <ul className="rounded-lg" key={path.href}>
                 <NavigationItem
                   href={path.href}
-                  title={path.title}
-                  className="p-4 font-semibold text-slate-800 hover:text-blue-500"
-                />
+                  className="p-4 font-semibold text-neutral-50 hover:text-blue-500"
+                >
+                  {path.title}
+                </NavigationItem>
               </ul>
             ))}
           </li>

@@ -16,7 +16,7 @@ export default function Home() {
         <div className="flex items-center max-w-lg mt-8">
           <Input
             placeholder="Copy your URL here"
-            className="h-12 rounded-lg p-2 border-2 border-slate-400"
+            className="h-12 rounded-lg p-2"
           />
           <div className="ml-2 ">
             <Button>Shorten</Button>
