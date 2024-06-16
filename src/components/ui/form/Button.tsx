@@ -2,11 +2,11 @@ import React from "react";
 import { clsx } from "clsx";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  title: string;
+  children: React.ReactNode;
   className?: string;
 }
 
-function Button({ title, className, ...props }: Props) {
+function Button({ children, className, ...props }: Props) {
   return (
     <button
       {...props}
@@ -15,7 +15,7 @@ function Button({ title, className, ...props }: Props) {
         className
       )}
     >
-      {title}
+      {children}
     </button>
   );
 }
