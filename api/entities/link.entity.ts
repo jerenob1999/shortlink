@@ -1,17 +1,9 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  CreateDateColumn,
-  UpdateDateColumn,
-  BaseEntity,
-} from "typeorm";
+import { Entity, Column, ManyToOne } from "typeorm";
+import { BaseEntity } from "./base.entity";
+import { User } from "./user.entity";
 
 @Entity()
 export class Link extends BaseEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
-
   @Column()
   url: string;
 
@@ -27,9 +19,6 @@ export class Link extends BaseEntity {
   @Column()
   lastClicked?: Date;
 
-  @CreateDateColumn()
-  createdAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date;
+  @ManyToOne(() => User, (user) => user.link)
+  user: User;
 }
