@@ -1,5 +1,5 @@
 import { Entity, Column, ManyToOne } from "typeorm";
-import { BaseEntity } from "./base.entity";
+import { BaseEntity } from "../config/base.entity";
 import { User } from "./user.entity";
 
 @Entity()

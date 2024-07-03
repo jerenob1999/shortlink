@@ -1,5 +1,5 @@
 import { Entity, Column, OneToMany, Unique } from "typeorm";
-import { BaseEntity } from "./base.entity";
+import { BaseEntity } from "../config/base.entity";
 import { Link } from "./link.entity";
 
 @Entity()

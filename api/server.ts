@@ -1,17 +1,26 @@
 import "reflect-metadata";
-import express from "express";
+import express, { Application, Router } from "express";
+import { UserRouter } from "./routes/user.routes";
 import { AppDataSource } from "./db";
+import cors from "cors";
 
-async function main() {
-  const app = express();
-  const SECRET = "u2VRAzTEB//Xmp+zeF5L4BFKZ7pwIGwic0ZbhjV8WM0=";
-  const PORT = 3000;
+class Main {
+  public app: Application = express();
+  private PORT: number = 3000;
 
-  AppDataSource.initialize().catch((error) => console.log(error));
+  constructor() {
+    this.app.use(cors());
+    this.app.use(express.json());
+    this.app.use("/api/v1", this.routers());
+    this.app.listen(this.PORT, () => {
+      console.log(`Server listening on port ${this.PORT}`);
+    });
+    AppDataSource.initialize().catch((error) => console.log(error));
+  }
 
-  app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
-  });
+  routers(): Router[] {
+    return [new UserRouter().router];
+  }
 }
 
-main();
+new Main();
