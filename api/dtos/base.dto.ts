@@ -3,11 +3,11 @@ import { IsOptional, IsUUID } from "class-validator";
 export class BaseDTO {
   @IsUUID()
   @IsOptional()
-  id!: number;
+  id?: number;
 
   @IsOptional()
-  createdAt: Date;
+  createdAt?: Date;
 
   @IsOptional()
-  updatedAt: Date;
+  updatedAt?: Date;
 }

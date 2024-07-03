@@ -1,9 +1,12 @@
-import Router from "express";
 import { UserController } from "../controllers/user.controller";
+import { BaseRouter } from "../shared/router/router";
 
-const router = Router();
+export class CustomerRouter extends BaseRouter<UserController> {
+  constructor() {
+    super(UserController);
+  }
 
-router.get("/user");
-router.post("/user", UserController.postUser);
-
-export default router;
+  routes(): void {
+    this.router.post("/user", (req, res) => this.controller.postUser(req, res));
+  }
+}
