@@ -1,8 +1,9 @@
 import "reflect-metadata";
 import express, { Application, Router } from "express";
-import { UserRouter } from "./routes/user.routes";
+import { UserRouter, LinkRouter } from "./routes";
 import { AppDataSource } from "./db";
 import cors from "cors";
+import morgan from "morgan";
 
 class Main {
   public app: Application = express();
@@ -10,6 +11,7 @@ class Main {
 
   constructor() {
     this.app.use(cors());
+    this.app.use(morgan("common"));
     this.app.use(express.json());
     this.app.use("/api/v1", this.routers());
     this.app.listen(this.PORT, () => {
@@ -19,7 +21,7 @@ class Main {
   }
 
   routers(): Router[] {
-    return [new UserRouter().router];
+    return [new UserRouter().router, new LinkRouter().router];
   }
 }
 

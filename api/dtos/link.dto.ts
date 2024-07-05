@@ -4,10 +4,10 @@ import { BaseDTO } from "./base.dto";
 export class LinkDTO extends BaseDTO {
   @IsNotEmpty()
   @IsUrl()
-  url!: string;
+  fullUrl!: string;
 
   @Min(3)
-  slug!: string;
+  shortUrl!: string;
 
   @IsOptional()
   description?: string;
@@ -17,4 +17,7 @@ export class LinkDTO extends BaseDTO {
 
   @IsOptional()
   lastClicked?: Date;
+
+  @IsNotEmpty()
+  userId!: number;
 }

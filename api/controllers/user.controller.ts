@@ -30,7 +30,6 @@ export class UserController {
   }
 
   public async getUser(req: Request<Params>, res: Response) {
-    console.log(req.params);
     const id = req.params.id;
     try {
       const user = await this.userService.findUserByParam({ id });

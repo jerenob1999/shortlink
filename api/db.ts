@@ -8,7 +8,7 @@ export const AppDataSource = new DataSource({
   port: 5432, // default Postgres port
   database: "shortlink",
   type: "postgres",
-  synchronize: true,
+  synchronize: false,
   entities: [__dirname + "/../**/*.entity.{js,ts}"],
   migrations: ["src/migrations/**/*{.ts,.js}"],
   subscribers: ["src/subscribers/**/*{.ts,.js}"],

@@ -11,6 +11,11 @@ export class User extends BaseEntity {
   @Column()
   password!: string;
 
+  @Column({
+    default: "",
+  })
+  username!: string;
+
   @OneToMany(() => User, (user) => user.link)
   link: Link[];
 }

@@ -1,14 +1,16 @@
-import { Entity, Column, ManyToOne } from "typeorm";
+import { Entity, Column, ManyToOne, JoinColumn } from "typeorm";
 import { BaseEntity } from "../config/base.entity";
 import { User } from "./user.entity";
 
 @Entity()
 export class Link extends BaseEntity {
-  @Column()
-  url: string;
+  @Column({
+    nullable: false,
+  })
+  FullUrl: string;
 
   @Column()
-  slug: string;
+  shortUrl: string;
 
   @Column()
   description?: string;
@@ -16,9 +18,17 @@ export class Link extends BaseEntity {
   @Column()
   clicks?: number;
 
-  @Column()
+  @Column({
+    nullable: true,
+  })
   lastClicked?: Date;
 
-  @ManyToOne(() => User, (user) => user.link)
+  @ManyToOne(() => User, (user) => user.link, {
+    eager: true,
+  })
+  @JoinColumn()
   user: User;
+
+  @Column()
+  userId: number;
 }

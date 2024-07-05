@@ -1,7 +1,8 @@
-import { Request, Response } from "express";
-import { LinkDTO } from "../dtos/link.dto";
 import { HttpResponse } from "../shared/response/http.response";
 import { LinkService } from "../services/link.service";
+import { Params } from "../shared/interfaces/response";
+import { Request, Response } from "express";
+import { LinkDTO } from "../dtos/link.dto";
 
 export class LinkController {
   constructor(
@@ -20,12 +21,16 @@ export class LinkController {
     }
   }
 
-  public async getLinks(req: Request, res: Response) {
+  public async getLinksByUserId(req: Request<Params>, res: Response) {
+    const id = req.params.id;
     try {
-      const links = await this.linkService.getLinks({});
+      if (!id) return this.httpResponse.Error(res, "Missing user id");
+      const links = await this.linkService.getLinks({ id });
+
       return this.httpResponse.Ok(res, links);
     } catch (error) {
       console.error(error);
+
       return this.httpResponse.Error(res, error);
     }
   }
