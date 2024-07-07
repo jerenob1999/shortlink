@@ -1,7 +1,8 @@
+import { Repository, FindOptionsWhere } from "typeorm";
 import { User } from "../entities/user.entity";
 import { UserDTO } from "../dtos/user.dto";
-import { Repository, FindOptionsWhere } from "typeorm";
 import { AppDataSource } from "../db";
+import * as bcrypt from "bcrypt";
 
 export class UserService {
   private readonly userRepository: Repository<User>;
@@ -16,7 +17,10 @@ export class UserService {
 
   async createUser(user: UserDTO): Promise<User | void> {
     try {
+      const hashedPassword = await bcrypt.hash(user.password, 10);
+      user.password = hashedPassword;
       const newUser = await this.userRepository.save(user);
+
       return newUser;
     } catch (error) {
       console.log(error);

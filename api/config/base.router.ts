@@ -1,16 +1,15 @@
-// import { ConfigServer } from "./config";
-// import { BaseEntity } from "./base.entity";
-// import { Repository, EntityTarget } from "typeorm";
+import { Router } from "express";
 
-// export class BaseService<T extends BaseEntity> extends ConfigServer {
-//   public execRepository: Promise<Repository<T>>;
-//   constructor(private getEntity: EntityTarget<T>) {
-//     super();
-//     this.execRepository = this.initRepository(getEntity);
-//   }
+export class BaseRouter<T, U> {
+  public router: Router;
+  public controller: T;
+  public middleware: U;
+  constructor(TController: { new (): T }, UMiddleware: { new (): U }) {
+    this.router = Router();
+    this.controller = new TController();
+    this.middleware = new UMiddleware();
+    this.routes();
+  }
 
-//   async initRepository<T>(e: EntityTarget<T>): Promise<Repository<T>> {
-//     const getConn = await this.initConnect
-//     return getConn.getRepository(e);
-//   }
-// }
+  routes() {}
+}

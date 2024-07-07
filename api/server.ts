@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import express, { Application, Router } from "express";
-import { UserRouter, LinkRouter } from "./routes";
+import { UserRouter, LinkRouter, AuthRouter } from "./routes";
 import { AppDataSource } from "./db";
 import cors from "cors";
 import morgan from "morgan";
@@ -21,7 +21,11 @@ class Main {
   }
 
   routers(): Router[] {
-    return [new UserRouter().router, new LinkRouter().router];
+    return [
+      new UserRouter().router,
+      new LinkRouter().router,
+      new AuthRouter().router,
+    ];
   }
 }
 
