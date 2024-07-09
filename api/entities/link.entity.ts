@@ -7,7 +7,7 @@ export class Link extends BaseEntity {
   @Column({
     nullable: false,
   })
-  FullUrl: string;
+  fullUrl: string;
 
   @Column()
   shortUrl: string;

@@ -1,6 +1,7 @@
 import { HttpResponse } from "../shared/response/http.response";
 import { LinkService } from "../services/link.service";
 import { Params } from "../shared/interfaces/response";
+import { PaginationDTO } from "../dtos/pagination.dto";
 import { Request, Response } from "express";
 import { LinkDTO } from "../dtos/link.dto";
 
@@ -21,11 +22,15 @@ export class LinkController {
     }
   }
 
-  public async getLinksByUserId(req: Request<Params>, res: Response) {
+  public async getLinksByUserId(
+    req: Request<Params, PaginationDTO>,
+    res: Response
+  ) {
     const id = req.params.id;
+    const pagination = req.query;
     try {
       if (!id) return this.httpResponse.Error(res, "Missing user id");
-      const links = await this.linkService.getLinks({ id });
+      const links = await this.linkService.getLinks({ id }, pagination);
 
       return this.httpResponse.Ok(res, links);
     } catch (error) {

@@ -1,6 +1,6 @@
 import { Link } from "../entities/link.entity";
 import { User } from "../entities/user.entity";
-import { LinkDTO } from "../dtos/link.dto";
+import { LinkDTO, PaginationDTO } from "../dtos";
 import { Repository, FindOptionsWhere } from "typeorm";
 import { AppDataSource } from "../db";
 
@@ -31,11 +31,21 @@ export class LinkService {
   }
 
   public async getLinks(
-    options: FindOptionsWhere<Link> | FindOptionsWhere<Link>[]
+    options: FindOptionsWhere<Link> | FindOptionsWhere<Link>[],
+    pagination: PaginationDTO
   ) {
+    const take = pagination.rowsPerPage ?? 10;
+    const skip = pagination.page ?? 0;
     try {
-      const Links = await this.linkRepository.findBy(options);
-      return Links;
+      const [results, total] = await this.linkRepository.findAndCount({
+        where: options,
+        take,
+        skip,
+      });
+      return {
+        results,
+        total,
+      };
     } catch (error) {
       throw error;
     }
