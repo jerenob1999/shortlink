@@ -3,6 +3,7 @@ import Title from "./_components/Title";
 import Button from "@/components/ui/form/Button";
 import Card from "@/components/ui/card/Card";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import LandingCard from "@/app/_components/LandingCardContainer/LandingCardContainer";
 import Image from "next/image";
 import bestprice from "../../public/best-price.png";
 import shield from "../../public/shield.png";
@@ -23,11 +24,14 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="bg-slate-200 h-3/5 px-24 py-10">
+
+      <LandingCard />
+      <section className="bg-slate-200 h-3/5">
         <h5 className="font-bold text-4xl text-slate-900 text-center">
           Why ShortLink?
         </h5>
-        <div className="flex justify-center mt-12 ">
+
+        {/* <div className="flex justify-center mt-12 ">
           <Card className="h-72 w-1/3 m-2 flex flex-col justify-between p-8 max-w-96">
             <div className="flex justify-center">
               <Image className="w-24" src={userFriendly} alt={"logo"} />
@@ -81,7 +85,7 @@ export default function Home() {
               </p>
             </div>
           </Card>
-        </div>
+        </div> */}
       </section>
     </main>
   );
