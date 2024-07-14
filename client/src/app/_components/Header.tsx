@@ -4,7 +4,7 @@ import {
   NavigationItem,
   NavigationContent,
 } from "@/components/ui/navigation";
-import { Path } from "@/types/links";
+import { Path } from "@/types/router";
 
 const paths = [
   {

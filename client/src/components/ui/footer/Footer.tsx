@@ -11,10 +11,7 @@ function Footer() {
     >
       <div className="w-1/4 flex flex-col justify-center">
         <p className="text-slate-200 font-semibold text-lg"> Follow Us </p>
-        <FooterIcon
-          href="https://github.com/jerenob1999"
-          icon={FaGithub}
-        ></FooterIcon>
+        <FooterIcon href="https://github.com/jerenob1999" icon={FaGithub} />
       </div>
     </footer>
   );

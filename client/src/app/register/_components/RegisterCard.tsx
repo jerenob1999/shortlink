@@ -7,7 +7,7 @@ import Button from "@/components/ui/form/Button";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { RegisterFormData } from "@/types/register";
-import { Path } from "@/types/links";
+import { Path } from "@/types/router";
 import { z, ZodType } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
