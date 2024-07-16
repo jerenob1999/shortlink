@@ -1,6 +1,6 @@
 "use client";
 
-import React, { InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes, forwardRef } from "react";
 import { clsx } from "clsx";
 import { FieldError } from "react-hook-form";
 
@@ -9,11 +9,15 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   error?: FieldError;
 }
 
-function Input({ className, error, label, ...props }: Props) {
+const Input = forwardRef<HTMLInputElement, Props>(function Input(
+  { className, error, label, ...props },
+  ref
+) {
   return (
     <div className="grid w-full items-center">
       <label>{label}</label>
       <input
+        ref={ref}
         className={clsx("bg-slate-200 rounded-lg p-2 outline-none", className, {
           "border border-red-500": error,
         })}
@@ -21,6 +25,6 @@ function Input({ className, error, label, ...props }: Props) {
       />
     </div>
   );
-}
+});
 
 export default Input;

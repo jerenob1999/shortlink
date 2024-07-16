@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "back": "nodemon ./server/index.ts",
     "build": "next build",
     "start": "next start",
@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.6.0",
+    "@tanstack/react-query": "^5.51.1",
+    "axios": "^1.7.2",
     "clsx": "^2.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
